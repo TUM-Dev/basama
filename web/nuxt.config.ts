@@ -1,5 +1,5 @@
 import vuetify from "vite-plugin-vuetify";
-import { twColors } from "~/utils/tw-colors";
+import { twColors } from "./utils/tw-colors";
 
 // PWA Config
 const title = "BaSaMa";
@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   build: { transpile: ["vuetify"] },
   modules: [
     "@kevinmarrec/nuxt-pwa",
+    '@nuxt/devtools',
     async (options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) =>
         // @ts-ignore
