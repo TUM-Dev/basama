@@ -1,14 +1,14 @@
 import vuetify from "vite-plugin-vuetify";
+import { twColors } from "~/utils/tw-colors";
 
 // PWA Config
-const title = "Vuetify 3 + Nuxt 3 Starter";
-const shortTitle = "Vuetify 3 + Nuxt 3 Starter";
-const description =
-  "Template to get you up and running with Nuxt 3 & Vuetify 3";
-const image = "https://vuetify3nuxt3starter.behonbaker.com/starter.png";
-const url = "https://vuetify3nuxt3starter.behonbaker.com/";
+const title = "BaSaMa";
+const shortTitle = "BaSaMa";
+const description = "A Thesisfinder to find the right bachelor, semester or master thesis for you.";
+const image = "https://basama.de/og_image.png";
+const url = "https://basama.de/";
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // import styles
   css: ["@/assets/main.scss"],
@@ -27,66 +27,64 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Vuetify 3 + Nuxt 3 Starter",
-      titleTemplate: "%s | Vuetify 3 + Nuxt 3 Starter",
+      title: "BaSaMa - the Thesisfinder",
+      titleTemplate: "%s | BaSaMa",
       link: [
-        { rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
-        { rel: "preconnect", href: "https://rsms.me/" },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "canonical", href: url },
       ],
       meta: [
         {
-          hid: "description",
+          key: "description",
           name: "description",
           content: description,
         },
         { property: "og:site_name", content: title },
-        { hid: "og:type", property: "og:type", content: "website" },
+        { key: "og:type", property: "og:type", content: "website" },
         {
-          hid: "og:url",
+          key: "og:url",
           property: "og:url",
           content: url,
         },
         {
-          hid: "og:image:secure_url",
+          key: "og:image:secure_url",
           property: "og:image:secure_url",
           content: image,
         },
         {
-          hid: "og:title",
+          key: "og:title",
           property: "og:title",
           content: title,
         },
         {
-          hid: "og:description",
+          key: "og:description",
           property: "og:description",
           content: description,
         },
         {
-          hid: "og:image",
+          key: "og:image",
           property: "og:image",
           content: image,
         },
         //Twitter
         { name: "twitter:card", content: "summary_large_image" },
         {
-          hid: "twitter:url",
+          key: "twitter:url",
           name: "twitter:url",
           content: url,
         },
         {
-          hid: "twitter:title",
+          key: "twitter:title",
           name: "twitter:title",
           content: title,
         },
         {
-          hid: "twitter:description",
+          key: "twitter:description",
           name: "twitter:description",
           content: description,
         },
         {
-          hid: "twitter:image",
+          key: "twitter:image",
           name: "twitter:image",
           content: image,
         },
@@ -97,14 +95,16 @@ export default defineNuxtConfig({
   pwa: {
     meta: {
       name: shortTitle,
-      author: "Behon Baker",
-      theme_color: "#4f46e5",
+      title: title,
+      author: "@CommanderStorm and @twihno",
+      theme_color: twColors.yellow[400],
       description: description,
     },
     manifest: {
       name: shortTitle,
       short_name: shortTitle,
-      theme_color: "#4f46e5",
+      lang: "en",
+      theme_color: twColors.yellow[400],
       description: description,
     },
   },

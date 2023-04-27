@@ -46,5 +46,4 @@ const custom: IconSet = {
   component: (props: IconProps) => h(Icon, { ...props }),
 };
 
-// export both aliases and the custom object created
 export { aliases, custom };

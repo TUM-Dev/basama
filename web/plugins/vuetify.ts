@@ -1,10 +1,10 @@
 import { createVuetify } from "vuetify";
+import { md3 } from 'vuetify/blueprints'
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     ssr: true,
     defaults,
-    // add theme
     theme: {
       defaultTheme: LIGHT_THEME,
       themes: {
@@ -18,7 +18,6 @@ export default defineNuxtPlugin((app) => {
       //     darken: 3,
       //   },
     },
-    // Add the custom iconset
     icons: {
       defaultSet: "custom",
       aliases,
@@ -26,6 +25,7 @@ export default defineNuxtPlugin((app) => {
         custom,
       },
     },
+    blueprint: md3,
   });
 
   app.vueApp.use(vuetify);
