@@ -6,10 +6,10 @@ export default defineNuxtPlugin((app) => {
     ssr: true,
     defaults,
     theme: {
-      defaultTheme: LIGHT_THEME,
+      defaultTheme: "light",
       themes: {
-        light,
-        dark,
+        light_theme,
+        dark_theme,
       },
       // add color variations
       //   variations: {

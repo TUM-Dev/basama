@@ -2,7 +2,7 @@ import { h } from "vue";
 import type { IconSet, IconAliases, IconProps } from "vuetify";
 import { Icon } from "@iconify/vue";
 
-const aliases: IconAliases = {
+export const aliases: IconAliases = {
   collapse: "ph:caret-up",
   complete: "ph:check",
   cancel: "ph:x-circle",
@@ -41,9 +41,7 @@ const aliases: IconAliases = {
   sortDesc: "ph:sort-descending",
 };
 
-const custom: IconSet = {
+export const custom: IconSet = {
   // @ts-ignore
   component: (props: IconProps) => h(Icon, { ...props }),
 };
-
-export { aliases, custom };
