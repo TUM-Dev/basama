@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/" id="header">
+  <NuxtLink to="/" id="logo">
       <VRow dense align-content="start" no-gutters>
        <VImg src="../assets/logo.png" height="4rem" max-width="10rem" alt="The Logo of BaSaMa"></VImg>
        <VImg src="../assets/associate.png" height="4rem" max-width="10rem" alt="The Logo of the offering University"></VImg>
@@ -7,8 +7,8 @@
   </NuxtLink>
 </template>
 
-<style>
-#header{
+<style lang="scss">
+#logo{
   position: absolute;
   top: 1rem;
   left: 1rem;
