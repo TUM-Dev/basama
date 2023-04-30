@@ -1,18 +1,20 @@
 <template>
-  <NuxtLink to="/" id="logo">
-      <VRow dense align-content="start" no-gutters>
-       <VImg src="../assets/logo.png" height="4rem" max-width="10rem" alt="The Logo of BaSaMa"></VImg>
-       <VImg src="../assets/associate.png" height="4rem" max-width="10rem" alt="The Logo of the offering University"></VImg>
-      </VRow>
+  <NuxtLink to="/" id="logo" class="align-center d-flex">
+    <img src="../assets/logo.png" alt="The Logo of BaSaMa">
+    <img src="../assets/associate.png" alt="The Logo of the offering University">
   </NuxtLink>
 </template>
 
 <style lang="scss">
-#logo{
+#logo {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 100%;
+  height: 6rem;
+  padding: 0 1rem;
+
+  img{
+    height: 40%;
+    margin: 0 5px;
+  }
 }
 </style>
 <script setup lang="ts">
