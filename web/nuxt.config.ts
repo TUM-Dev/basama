@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   modules: [
     "@kevinmarrec/nuxt-pwa",
     '@nuxt/devtools',
+    '@nuxt/content',
     async (options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) =>
         // @ts-ignore

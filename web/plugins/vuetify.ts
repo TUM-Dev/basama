@@ -12,11 +12,11 @@ export default defineNuxtPlugin((app) => {
         dark_theme,
       },
       // add color variations
-      //   variations: {
-      //     colors: ["primary", "secondary"],
-      //     lighten: 3,
-      //     darken: 3,
-      //   },
+      variations: {
+        colors: ["primary", "secondary"],
+        lighten: 3,
+        darken: 3,
+      },
     },
     icons: {
       defaultSet: "custom",
