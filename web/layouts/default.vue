@@ -7,6 +7,7 @@
     <VMain>
       <slot />
     </VMain>
+  <Footer />
   </VApp>
 </template>
 
