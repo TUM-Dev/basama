@@ -11,12 +11,11 @@
 </template>
 
 <style lang="scss">
-@import "../assets/variables.scss";
   header {
     position: relative;
     width: 100%;
     height: 6rem;
-    background-color: $primary-color;
+    background-color: rgba(var(--v-theme-primary), 1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 </style>
