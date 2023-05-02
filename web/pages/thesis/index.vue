@@ -20,27 +20,7 @@
         </VChipGroup>
 
         <h3 v-if="thesis.attachments" class="mt-4">Attachments</h3>
-        <VSlideGroup>
-          <VSlideGroupItem
-            v-for="attachment in thesis.attachments"
-            :key="attachment.preview_image">
-            <VContainer fluid>
-            <VCard
-              class="m-1"
-              width="17.5rem">
-              <VImg
-                :src="attachment.preview_image"
-                class="align-end"
-                gradient="to bottom, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.7)"
-                height="30rem"
-                cover
-              >
-                <VCardTitle class="text-white" v-text="attachment.name"></VCardTitle>
-              </VImg>
-            </VCard>
-              </VContainer>
-          </VSlideGroupItem>
-        </VSlideGroup>
+        <ThesisAttachments v-if="thesis.attachments" :attachments="thesis.attachments" height="30rem"/>
       </VCol>
 
       <VCol md="12" xl="4">
