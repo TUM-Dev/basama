@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <VCol justify="center" class="fill-width">
     <VImg
       cover
@@ -110,8 +111,7 @@
       </NuxtLink>
     </VContainer>
   </VCol>
-
-
+  </ClientOnly>
 </template>
 
 <style lang="scss" scoped>
@@ -126,6 +126,8 @@
 </style>
 
 <script setup lang="ts">
+import { faker } from "@faker-js/faker";
+
 const timeline = [
   { time: "2017", text: "The project was intially develped as xxx for xxx" },
   { time: "2020", text: "After the initial development, the project was taken over by the MW student council" },
@@ -135,22 +137,17 @@ const timeline = [
   },
   { time: "end of 2023", text: "The project was adopted as a sandbox project by TUM IT Management" }
 ];
-const testemonials = [
-  { avatar: "/faces/1.jpeg", name: "John Doe", position: "Student", text: "Lorem ipsum dolor sit amet, consectetur" },
-  { avatar: "/faces/2.jpeg", name: "Lisa Doe", position: "IT Admin", text: "Lorem ipsum dolor sit amet, consectetur" },
-  {
-    avatar: "/faces/3.jpeg",
-    name: "Max Mustermann",
-    position: "Scientific staff",
-    text: "Lorem ipsum dolor sit amet, consectetur"
-  },
-  {
-    avatar: "/faces/frank.jpeg",
-    name: "Frank Elsinga",
-    position: "Nonscientific staff",
-    text: "Lorem ipsum dolor sit amet, consectetur"
-  }
-];
+function createRandomTestimonial() {
+  const gender = faker.name.sexType();
+  return {
+    avatar: faker.image.avatar(),
+    name: faker.name.fullName({ gender }),
+    position: faker.name.jobTitle(),
+    text: faker.hacker.phrase() +", because" + faker.company.bs(),
+  };
+}
+
+const testemonials = faker.helpers.uniqueArray(createRandomTestimonial,6);
 
 definePageMeta({
   layout: "home"

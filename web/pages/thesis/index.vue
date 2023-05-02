@@ -1,102 +1,92 @@
 <template>
-  <VContainer>
-    <VRow>
-      <VCol md="12" xl="8">
-        <h2>{{ thesis.type }}</h2>
-        <h1>{{ thesis.title }}</h1>
-        <p id="description">
-          {{ thesis.description }}
-        </p>
-        <VChipGroup>
-          <VChip
-            v-for="tag in thesis.tags"
-            :key="tag.url"
-            :href="tag.url"
-            color=""
-            label
-          >
-            {{ tag.name }}
-          </VChip>
-        </VChipGroup>
+  <ClientOnly>
+    <VContainer>
+      <VRow>
+        <VCol md="12" xl="8">
+          <h2>{{ thesis.type.name }}</h2>
+          <h1>{{ thesis.title }}</h1>
+          <p id="description">
+            {{ thesis.description }}
+          </p>
+          <VChipGroup>
+            <VChip
+              v-for="tag in thesis.tags"
+              :key="tag.url"
+              :href="tag.url"
+              color=""
+              label
+            >
+              {{ tag.name }}
+            </VChip>
+          </VChipGroup>
 
-        <h3 v-if="thesis.attachments" class="mt-4">Attachments</h3>
-        <ThesisAttachments v-if="thesis.attachments" :attachments="thesis.attachments" height="30rem"/>
-      </VCol>
+          <h3 v-if="thesis.attachments" class="mt-4">Attachments</h3>
+          <ThesisAttachments v-if="thesis.attachments" :attachments="thesis.attachments" height="30rem" />
+        </VCol>
 
-      <VCol md="12" xl="4">
-        <h3>Advisor</h3>
-        <VCard
-          :title="thesis.advisor.name"
-          :prepend-avatar="thesis.advisor.profile_image"
-          :subtitle="'Room: '+ thesis.advisor.room +'\nPhone: '+ thesis.advisor.phone+'\nEmail: '+ thesis.advisor.email "
-          :text="'Research: '+thesis.advisor.research"
-        />
+        <VCol md="12" xl="4">
+          <h3>Advisor</h3>
+          <VCard
+            :title="thesis.advisor.name"
+            :prepend-avatar="thesis.advisor.profile_image"
+            :subtitle="'Room: '+ thesis.advisor.room +'\nPhone: '+ thesis.advisor.phone+'\nEmail: '+ thesis.advisor.email "
+            :text="'Research: '+thesis.advisor.research"
+          />
 
-        <h4 class="mt-4">Organisation</h4>
-        <VCard
-          :prepend-avatar="thesis.organisation.profile_image"
-          :title="thesis.organisation.name"
-          :subtitle="thesis.organisation.parent_organisation"
-          :text="thesis.organisation.slogan"
-        />
-      </VCol>
-    </VRow>
-  </VContainer>
+          <h4 class="mt-4">Organisation</h4>
+          <VCard
+            :prepend-avatar="thesis.organisation.profile_image"
+            :title="thesis.organisation.name"
+            :subtitle="thesis.organisation.parent_organisation"
+            :text="thesis.organisation.slogan"
+          />
+        </VCol>
+      </VRow>
+    </VContainer>
+  </ClientOnly>
 </template>
 
 <style lang="scss">
-.v-card-subtitle,#description {
+.v-card-subtitle, #description {
   white-space: pre; // Needed to preserve newlines
 }
 </style>
 
 <script setup lang="ts">
 //const { data: thesis } = useFetch('/api/thesis')
+import { faker } from "@faker-js/faker";
+import { createRandomAttachments } from "~/composables/attachments";
+import type { TypedFilter } from "~/components/SearchFilterSelector.vue";
+
+const advisor_sex = faker.name.sexType();
+const advisor = {
+  first_name: faker.name.firstName(advisor_sex),
+  last_name: faker.name.firstName(advisor_sex)
+};
 const thesis = ref({
-  type: "Masterarbeit",
+  type: { name: "Bachelor thesis", id: "bachelor" },
   title: "Die beste Bachelorarbeit die es jemals gegeben hat",
-  description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.\nQuisquam voluptatum, quibusdam, quia, quae voluptates voluptatem quod voluptatibus quos doloribus quas natus.\nQuisquam voluptatum, quibusdam, quia, quae voluptates voluptatem quod voluptatibus quos doloribus quas natus.",
-  attachments: [
-    {
-      name: "Anhang 1",
-      preview_image: "https://imglarger.com/Images/before-after/ai-image-enlarger-1-after-2.jpg"
-    },
-    {
-      name: "Anhang 2",
-      preview_image: "https://www.epe.ed.tum.de/fileadmin/w00bzo/hlu/pics/Startseite/TUM-Stammgelaende_21_9_1920_823_72dpi.jpg"
-    },
-    {
-      name: "Anhang 3",
-      preview_image: "https://www.epe.ed.tum.de/fileadmin/w00bzo/hlu/pics/Startseite/TUM-Stammgelaende_21_9_1920_823_72dpi.jpg"
-    },
-    {
-      name: "Anhang 4",
-      preview_image: "https://www.epe.ed.tum.de/fileadmin/w00bzo/hlu/pics/Startseite/TUM-Stammgelaende_21_9_1920_823_72dpi.jpg"
-    },
-  ],
+  description: faker.lorem.paragraphs(5),
+  attachments: createRandomAttachments(0, 5),
   advisor: {
-    name: "Prof. Dr. Max Mustermann",
-    profile_image: "https://www.tum.de/fileadmin/_processed_/8/9/csm_181017_P-Wahl-Hofmann_8f467f0287.webp",
-    research: "KI, Deep Learning, Machine Learning mit einem Fokus auf Computer Vision",
-    email: "max.mustermann@tum.de",
+    name: `${faker.helpers.arrayElement(["Prof. Dr.", "Dr.", "M.Sc.", ""])} ${advisor.first_name} ${advisor.last_name}`,
+    profile_image: faker.image.avatar(),
+    research: `${faker.company.bsNoun()}, ${faker.company.bsNoun()} and ${faker.company.bsNoun()}. Personal Fokus: ${faker.company.bsNoun()}`,
+    email: faker.internet.email(advisor.first_name, advisor.last_name, "tum.de"),
     room: "Raum 123",
-    phone: "0123456789"
+    phone: faker.phone.number()
   },
   organisation: {
-    name: "Lehrstuhl für Human-Centered AI",
-    parent_organisation: "School of Engineering and design",
-    profile_image: "https://www.tum.de/fileadmin/_processed_/8/9/csm_181017_P-Wahl-Hofmann_8f467f0287.webp",
-    slogan: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    name: `${faker.helpers.arrayElement(["Forschungsgruppe", "Max Plank Institut", "Lehrstuhl"])} für ${faker.helpers.arrayElement(["Maschinenelemente", "Flugzeugbau", "Fahrzeugtechnik", "Fertigungstechnik", "IT Sicherheit"])}`,
+    parent_organisation: `School of ${faker.helpers.arrayElement(["Computation Information and Technology", "Engineering and Design", "Life Sciences", "Medicine", "Natural Sciences", "Management"])}`,
+    profile_image: faker.image.business(100, 100),
+    slogan: faker.company.bs() + " via " + faker.company.catchPhrase()
   },
   tags: [
-    {
-      name: "Tag 1",
-      url: "https://www.google.com"
-    },
-    {
-      name: "Tag 2",
-      url: "https://www.google.com"
-    }
-  ]
+    { name: "Bachlor thesis", id: "bachlor", type: "type" },
+    { name: "Konstruktiv", id: "konstruktiv", type: "activities" },
+    { name: "Wirtschaftsinformatik", id: "winfo", type: "study_direction" },
+    { name: "Games Engeneering", id: "games", type: "study_direction" }
+  ] as TypedFilter[]
 });
 </script>
