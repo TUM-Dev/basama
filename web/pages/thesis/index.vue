@@ -54,10 +54,10 @@
 
         <h4 class="mt-4">Organisation</h4>
         <VCard
-          :prepend-avatar="thesis.organsation.profile_image"
-          :title="thesis.organsation.name"
-          :subtitle="thesis.organsation.parent_organsation"
-          :text="thesis.organsation.slogan"
+          :prepend-avatar="thesis.organisation.profile_image"
+          :title="thesis.organisation.name"
+          :subtitle="thesis.organisation.parent_organisation"
+          :text="thesis.organisation.slogan"
         />
       </VCol>
     </VRow>
@@ -102,9 +102,9 @@ const thesis = ref({
     room: "Raum 123",
     phone: "0123456789"
   },
-  organsation: {
+  organisation: {
     name: "Lehrstuhl für Human-Centered AI",
-    parent_organsation: "School of Engineering and design",
+    parent_organisation: "School of Engineering and design",
     profile_image: "https://www.tum.de/fileadmin/_processed_/8/9/csm_181017_P-Wahl-Hofmann_8f467f0287.webp",
     slogan: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
   },
