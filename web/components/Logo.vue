@@ -1,7 +1,7 @@
 <template>
   <NuxtLink to="/" id="logo" class="align-center d-flex">
     <img src="../assets/logo.png" alt="The Logo of BaSaMa">
-    <img src="../assets/associate.png" alt="The Logo of the offering University">
+    <img src="/icon.png" alt="The Logo of the offering University">
   </NuxtLink>
 </template>
 
