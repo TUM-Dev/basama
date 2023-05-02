@@ -29,14 +29,16 @@
         <VCol md="12" lg="6" xxl="4"
               v-for="result in shown_results"
               :key="result.id">
-          <VCard
-            :title="result.title"
-            :subtitle="result.organisation.name + ' | ' + result.advisor"
-            :append-avatar="result.organisation.avatar"
-            :text="result.attachments && result.description.length > 200 ? result.description.substring(0, 200) + '...' : result.description"
-          >
-            <ThesisAttachments v-if="result.attachments" :attachments="result.attachments" height="10rem" />
-          </VCard>
+          <NuxtLink :to="`/thesis/${result.id}`" class="no-link-decoration">
+            <VCard
+              :title="result.title"
+              :subtitle="result.organisation.name + ' | ' + result.advisor"
+              :append-avatar="result.organisation.avatar"
+              :text="result.attachments && result.description.length > 200 ? result.description.substring(0, 200) + '...' : result.description"
+            >
+              <ThesisAttachments v-if="result.attachments" :attachments="result.attachments" height="10rem" />
+            </VCard>
+          </NuxtLink>
         </VCol>
       </VRow>
     </VContainer>
@@ -88,3 +90,8 @@ const shown_results = ref(faker.helpers.uniqueArray(createRandomResult, faker.da
 })));
 
 </script>
+<style lang="scss" scoped>
+.no-link-decoration {
+  text-decoration: none;
+}
+</style>

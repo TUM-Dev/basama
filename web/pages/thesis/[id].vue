@@ -89,4 +89,13 @@ const thesis = ref({
     { name: "Games Engeneering", id: "games", type: "study_direction" }
   ] as TypedFilter[]
 });
+
+definePageMeta({
+  validate: async (route) => {
+    const UUID_REGEX = /^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
+    console.log("got ", route.params.id, " => match: ", UUID_REGEX.test(route.params.id as string));
+    return UUID_REGEX.test(route.params.id as string);
+  }
+});
+
 </script>
