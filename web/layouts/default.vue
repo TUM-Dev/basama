@@ -1,6 +1,7 @@
 <template>
   <header>
     <Logo style="filter: grayscale(1) invert(2)"/>
+    <ProfileCard/>
   </header>
 
   <VApp>
