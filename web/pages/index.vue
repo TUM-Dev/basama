@@ -138,10 +138,10 @@ const timeline = [
   { time: "end of 2023", text: "The project was adopted as a sandbox project by TUM IT Management" }
 ];
 function createRandomTestimonial() {
-  const gender = faker.name.sexType();
+  const sex = faker.name.sexType();
   return {
     avatar: faker.image.avatar(),
-    name: faker.name.fullName({ gender }),
+    name: faker.name.fullName({ sex }),
     position: faker.name.jobTitle(),
     text: faker.hacker.phrase() +", because" + faker.company.bs(),
   };
