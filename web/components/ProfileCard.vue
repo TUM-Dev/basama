@@ -24,15 +24,15 @@
           :subtitle="user.email"
         >
           <template v-slot:append>
-          <VBtn icon="mdi-logout"/>
+            <VBtn icon="mdi-logout" />
           </template>
         </VListItem>
-        <VDivider/>
+        <VDivider />
         <VListItem>
           Theme:
-            <VBtn
-              @click="toggleTheme"
-              :icon="theme.current.value.dark ? 'mdi-brightness-3' : 'mdi-brightness-7'" />
+          <VBtn
+            @click="toggleTheme"
+            :icon="theme.current.value.dark ? 'mdi-brightness-3' : 'mdi-brightness-7'" />
         </VListItem>
       </VList>
     </VCard>
@@ -42,6 +42,7 @@
 <script setup lang="ts">
 import { faker } from "@faker-js/faker";
 import { useTheme } from "vuetify";
+import { themeCookie } from "~/composables/theme";
 
 const sex = faker.name.sexType();
 const firstName = faker.name.firstName(sex);
@@ -54,7 +55,11 @@ const user = reactive({
 });
 
 const theme = useTheme();
-const toggleTheme = () => theme.global.name.value = theme.global.current.value.dark ? "light_theme" : "dark_theme";
+const toggleTheme = () => {
+  const newTheme = theme.global.current.value.dark ? "light_theme" : "dark_theme";
+  theme.global.name.value = newTheme;
+  themeCookie().value = newTheme;
+};
 const menu = ref(false);
 </script>
 

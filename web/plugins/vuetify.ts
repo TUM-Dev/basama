@@ -1,12 +1,13 @@
 import { createVuetify } from "vuetify";
 import { md3 } from 'vuetify/blueprints'
+import { themeCookie } from "~/composables/theme";
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     ssr: true,
     defaults,
     theme: {
-      defaultTheme: "light_theme",
+      defaultTheme: themeCookie().value,
       themes: {
         light_theme,
         dark_theme,
