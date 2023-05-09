@@ -7,12 +7,10 @@
 
 <style lang="scss">
 #logo {
-  position: absolute;
-  height: 6rem;
-  padding: 0 1rem;
+  height: 4rem;
 
   img{
-    height: 40%;
+    height: 60%;
     margin: 0 5px;
   }
 }

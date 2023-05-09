@@ -1,42 +1,45 @@
 <template>
-  <VMenu
-    v-model="menu"
-    :close-on-content-click="false"
-    open-on-hover
-    location="bottom"
-  >
-
-    <template v-slot:activator="{ props }">
-      <VBtn
-        variant="flat"
-        v-bind="props"
-        id="profile"
+  <VCol>
+    <VRow justify="end">
+      <VMenu
+        v-model="menu"
+        :close-on-content-click="false"
+        open-on-hover
+        location="bottom"
       >
-        <VAvatar size="60" :image="user.avatar" />
-      </VBtn>
-    </template>
-
-    <VCard min-width="300">
-      <VList>
-        <VListItem
-          :prepend-avatar="user.avatar"
-          :title="user.firstName + ' ' + user.lastName"
-          :subtitle="user.email"
-        >
-          <template v-slot:append>
-            <VBtn icon="mdi-logout" />
-          </template>
-        </VListItem>
-        <VDivider />
-        <VListItem>
-          Theme:
+        <template v-slot:activator="{ props }">
           <VBtn
-            @click="toggleTheme"
-            :icon="theme.current.value.dark ? 'mdi-brightness-3' : 'mdi-brightness-7'" />
-        </VListItem>
-      </VList>
-    </VCard>
-  </VMenu>
+            variant="flat"
+            v-bind="props"
+            id="profile"
+          >
+            <VAvatar size="40" :image="user.avatar" />
+          </VBtn>
+        </template>
+
+        <VCard min-width="300">
+          <VList>
+            <VListItem
+              :prepend-avatar="user.avatar"
+              :title="user.firstName + ' ' + user.lastName"
+              :subtitle="user.email"
+            >
+              <template v-slot:append>
+                <VBtn icon="mdi-logout" />
+              </template>
+            </VListItem>
+            <VDivider />
+            <VListItem>
+              Theme:
+              <VBtn
+                @click="toggleTheme"
+                :icon="theme.current.value.dark ? 'mdi-brightness-3' : 'mdi-brightness-7'" />
+            </VListItem>
+          </VList>
+        </VCard>
+      </VMenu>
+    </VRow>
+  </VCol>
 </template>
 
 <script setup lang="ts">
@@ -65,12 +68,9 @@ const menu = ref(false);
 
 <style lang="scss" scoped>
 #profile {
-  position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
-  border-radius: 10rem !important;
-  height: 4.5rem;
-  width: 4.5rem;
-  padding: 2px;
+  border-radius: 3rem !important;
+  height: 40px;
+  width: 40px;
+  padding: 1px;
 }
 </style>

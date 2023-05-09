@@ -1,5 +1,5 @@
 <template>
-  <v-footer
+  <VFooter
     color="primary"
     absolute
     id="main-footer"
@@ -15,7 +15,7 @@
         </VRow>
       </VCol>
     </VContainer>
-  </v-footer>
+  </VFooter>
 </template>
 
 <style lang="scss" scoped>

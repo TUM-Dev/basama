@@ -1,23 +1,24 @@
 <template>
-  <header>
-    <Logo style="filter: grayscale(1) invert(2)"/>
-    <ProfileCard/>
-  </header>
-
   <VApp>
+    <header>
+      <VToolbar
+        color="primary"
+      >
+
+        <template v-slot:prepend>
+          <Logo style="filter: grayscale(1) invert(2)" />
+        </template>
+
+        <VSpacer />
+
+        <ProfileCard />
+      </VToolbar>
+    </header>
     <VMain>
       <slot />
     </VMain>
-  <Footer />
+    <Footer />
   </VApp>
 </template>
-
-<style lang="scss">
-  header {
-    position: relative;
-    width: 100%;
-    height: 6rem;
-    background-color: rgba(var(--v-theme-primary), 1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-</style>
+<script setup lang="ts">
+</script>
