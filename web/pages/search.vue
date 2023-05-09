@@ -26,7 +26,7 @@
 
     <VContainer>
       <VRow>
-        <VCol md="12" lg="6" xxl="4"
+        <VCol sm="12" md="12" lg="6" xxl="4"
               v-for="result in shown_results"
               :key="result.id">
           <NuxtLink :to="`/thesis/${result.id}`" class="no-link-decoration">
