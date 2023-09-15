@@ -10,5 +10,8 @@ Eventual goals:
 - [ ] students can seach for pubished thesis
 - [ ] students can get in touch with a potential supervisor
 
+Potential goals:
+- [ ] the abiltiy to replace university wide job portals [portal.mytum.de/jobs](https://portal.mytum.de/jobs/sonstige)
+
 ## UI-Samples
 ![](docs/main_preview.jpg)
