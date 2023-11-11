@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
-    "@nuxt/devtools": "^0.4.4",
+    "@nuxt/devtools": "^1.0.1",
     "swagger-ui-dist": "^4.18.3",
     "vite-plugin-vuetify": "^1.0.2"
   }
